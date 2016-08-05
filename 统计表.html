@@ -25,20 +25,14 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
-        #bg{
-            background-image: url(img/quan.png);
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-        }
-         #bg{
-            background-image: url(img/quan.png);
-            background-repeat: no-repeat;
-         }
+        
+        #div{width: 100px;height: 100px;background: red;position: relative;left: 0}
     </style>
     
 </head>
 <body>
     
+<!--
     <table cellspacing="0" cellpadding="0">
         <tr>
             <td id="bg"></td>
@@ -78,5 +72,116 @@
         </tr>
         
     </table>
+    
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<textarea rows="10" cols="40">
+   
+</textarea>
+<input type="button" value="开始">
+<textarea rows="10" cols="40"></textarea>
+-->
+<div id="div"></div>
+
+
+    <script>
+    function getattr(obj,attr){
+        if(obj.currentstyle){
+            return obj.currentstyle[attr]
+        }else{
+            return getComputedStyle(obj)[attr]
+        }
+    }
+//        var text = document.getElementsByTagName('textarea')
+//        var inp = document.getElementsByTagName('input')
+//        
+//        inp[0].onclick = function(){
+//        
+//            var re = /<[^<>]+>/g;
+//          text[1].value = text[0].value.replace(re,'')
+//        }
+//        var str = '  adf  asdf asdf asdf  sadfjlk '
+//        var china = /[\u4e00-u9fa5]/
+//        var re = /\s/gi;
+//        var re1 = /[1-9]\d{4,10}/
+//        alert(str.replace(re,''))
+        
+//        function getclass(oparent,oclass){
+//            var x = oparent.getElementsByTagName('*')
+//            var arr = []
+//            for(var i=0; i<x.length; i++){
+//                if(x[i].className ==  oclass){
+//                    arr.push(x[i])
+//                }
+//            }
+//            return arr
+//        }
+//        
+//        var json = {'name':'xiaoming','age':'na','aa':'bb'}
+//        for(var attr in json){
+//            alert(attr)
+//        }
+        var div = document.getElementById('div')
+        function setStyle(obj,json,fun){
+            clearInterval(obj.time)
+            obj.time = setInterval(function(){
+            var onoff = true;
+            for(var attr in json){
+            var inew = parseInt(getattr(obj,attr));
+            var isp = (json[attr]-inew)/6;
+            isp = isp>0? Math.ceil(isp) : Math.floor(isp)
+            if(json[attr] == inew){
+               if(onoff){
+                clearInterval(obj.time)
+                if(fun) fun()
+               }
+            }else{
+                onoff = false
+                obj.style[attr] = inew+isp+'px'
+            }
+            } 
+            },100)
+        }
+        setStyle(div,{'width':'200','height':'105'},function(){
+            setStyle(div,{'left':'200'})
+        })
+//        function x(){
+//            alert(1)
+//            return function(){
+//                alert(2)
+//            }
+//        }
+//      x()()
+        function F(){
+    this.method = function(){
+        alert('f.method is called')
+        g();
+    }
+}
+function g(){
+    alert(123)
+}
+var f = new F();
+f.method()
+//        setStyle(div,{'width':'200px','height':'200px','background':'green'})
+    </script>
+
+
+
+
+
 </body>
 </html>

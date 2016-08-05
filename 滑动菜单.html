@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul{position: relative;margin: 10px auto; border: 1px solid black;width: 400px;height: 32px;}
+        li{box-sizing: border-box;border-left: 1px solid black;float: left;text-align: center;line-height: 30px;list-style: none;width: 100px;}
+        li:nth-of-type(5){position: absolute;width: 100px;height: 5px;background: red;bottom: 0px;left: 0;}
+    </style>
+    <script>
+    
+        window.onload = function(){
+        
+            var ul = document.getElementsByTagName('ul')
+            var li = document.getElementsByTagName('li')
+            var last = li[li.length-1]
+            
+            for(var i=0; i<li.length-1; i++){
+                li[i].onmouseover = function(){
+                 tab(last,this.offsetLeft)
+                 
+                }
+               
+                
+            }
+            var isp = 0
+            function tab(obj,end){
+                clearInterval(obj.time)
+
+                obj.time = setInterval(function(){
+                    isp += (end-obj.offsetLeft)/5
+                    isp = isp*0.7
+                    obj.style.left = obj.offsetLeft+isp+'px'
+                },100)
+                
+                
+            }
+            
+        }
+//        alert(Math.floor(-12.3)) // 下取整
+//        alert(Math.ceil(-12.3))  // 上去整
+        
+    </script>
+</head>
+<body>
+    <ul>
+        <li>首页</li>
+        <li>关于我们</li>
+        <li>产品展示</li>
+        <li>新闻动态</li>
+        <li class="bg"></li>
+    </ul>
+</body>
+</html>
