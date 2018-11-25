@@ -4,3 +4,6 @@ function hello (){
 function dog(){
     console.log("dog")
 }
+function fun(){
+    console.log('asdfaf')
+}
