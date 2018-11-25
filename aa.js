@@ -7,3 +7,6 @@ function dog(){
 function fun(){
     console.log('asdfaf')
 }
+function show(){
+    console.log('show');
+}
