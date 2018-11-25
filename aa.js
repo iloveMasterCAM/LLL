@@ -12,3 +12,6 @@ function show(){
     console.log('show-你好');
 
 }
+function bbb(){
+    console.log('bbb');
+}
