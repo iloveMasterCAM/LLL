@@ -8,5 +8,5 @@ function fun(){
     console.log('asdfaf')
 }
 function show(){
-    console.log('show');
+    console.log('show-hello');
 }
