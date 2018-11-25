@@ -12,6 +12,3 @@ function show(){
     console.log('show-你好');
 
 }
-function man(){
-    console.log('man')
-}
