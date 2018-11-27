@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 </head>
+
 <body>
     <div id="root">
         {{val}}
-        <my-component></my-component>
-        <my-component></my-component>
-        <my-component></my-component>
+
+        <my-component v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:title="post.title"
+            v-bind:id="post.id"
+            ></my-component>
+       
     </div>
-    <div id="app">
-        <my-component></my-component>
-        <my-component></my-component>
-        <my-component></my-component>
-    </div>
+
     <script>
-    Vue.component('my-component',{
-        props:['title'],
-        data:function(){
-            return {
-                child: 0
+        Vue.component('my-component', {
+            props: ['title','id'],
+            data: function () {
+                return {
+                    child: 0
+                }
+            },
+            template: '<div><h1 @click=child++> {{id}}{{title}}</h1> </div>'
+        })
+        var vm = new Vue({
+            el: '#root',
+            data: {
+                val: '12212',
+                posts: [
+                    { id: 1, title: 'My journey with Vue' },
+                    { id: 2, title: 'Blogging with Vue' },
+                    { id: 3, title: 'Why Vue is so fun' }
+                ]
             }
-        },
-        template:'<div><h1 @click=child++>{{child}}</h1></div>'
-    })
-    var vm = new Vue({
-        el:'#root',
-        data:{
-            val:'12212'
-        }
-    })
-    var app = new Vue({
-        el:'#app'
-    })
+        })
+
 
     </script>
 </body>
+
 </html>
