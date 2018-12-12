@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>选项卡</title>
-    
+
     <style>
-        li{
+        li {
             list-style: none;
         }
-        *{
+
+        * {
             margin: 0px;
             padding: 0px;
         }
-        ol{
+
+        ol {
             display: block;
             height: 30px;
         }
-        ol li{
+
+        ol li {
             padding: 3px 15px;
             margin: 0 5px;
             background: #ddd;
@@ -24,57 +28,66 @@
             float: left;
             cursor: pointer;
         }
-        ul{
+
+        ul {
             width: 500px;
             height: 350px;
             border: 1px solid #ccc;
-           position: relative;
+            position: relative;
         }
-        ul li{
-            width: 100%;height: 100%;
+
+        ul li {
+            width: 100%;
+            height: 100%;
             background: #ccc;
-            position: absolute;top: 0;
+            position: absolute;
+            top: 0;
             display: none;
         }
-        ul .ctive{
+
+        ul .ctive {
             display: block;
         }
     </style>
     <script>
-        window.onload = function(){
+        window.onload = function () {
             var obj = new Tabshow()
-//            setTimeout(function(){
-////            alert(1)
-//                var a = document.createElement('a')
-//                a.href ="https://www.baidu.com/"
-//                document.body.appendChild(a)
-//            },1000)
+            //            setTimeout(function(){
+            ////            alert(1)
+            //                var a = document.createElement('a')
+            //                a.href ="https://www.baidu.com/"
+            //                document.body.appendChild(a)
+            //            },1000)
         };
-     function Tabshow(){
-    
+        function Tabshow() {
+
             this.ol = document.getElementById('ol');
             this.ul = document.getElementById('ul');
             this.oli = ol.getElementsByTagName('li');
             this.ul_li = ul.getElementsByTagName('li');
             this._this = 0;
             var x = this;
-            for(var i=0; i<this.oli.length; i++){
+            for (var i = 0; i < this.oli.length; i++) {
                 this.oli[i].ind = i;
-                this.oli[i].onclick = function(){
+                this.oli[i].onclick = function () {
                     x.tab(this.ind)
                 }
             }
         };
-      Tabshow.prototype.tab = function(n){
-       this.ul_li[this._this].className = ''
-       this.ul_li[n].className = 'ctive'
-       this._this = n
-     }
+        Tabshow.prototype.tab = function (n) {
+            this.ul_li[this._this].className = ''
+            this.ul_li[n].className = 'ctive'
+            this._this = n
+        }
     </script>
 </head>
+
 <body>
     <ol id="ol">
         <li>1</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
         <li>2</li>
         <li>3</li>
         <li>4</li>
@@ -90,4 +103,5 @@
         <li>6</li>
     </ul>
 </body>
+
 </html>
